@@ -6,7 +6,6 @@ from pygame.locals import (
 )
 from random import *
 
-
 Grid_x = 8
 Grid_y = 8
 N_Mines = randint(10, (Grid_x - 1) * (Grid_y - 1))
@@ -16,7 +15,7 @@ shuffle(shuffled_mines)
 
 field = []
 for i in range(Grid_y):
-    field.append(shuffled_mines[i * Grid_x:i * Grid_x + Grid_x])
+    field.append(shuffled_mines[i * Grid_x : i * Grid_x + Grid_x])
 
 for i in field:
     print(i)
