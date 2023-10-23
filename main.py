@@ -46,7 +46,6 @@ for y, column in enumerate(field):
             mines_around += field[y + 1][x]
         if mines_around == 8:
             field[x][y] = 0
-    print(column)
 
 pygame.init()
 
@@ -71,7 +70,6 @@ for y, column in enumerate(field):
         screen.blit(back_tile, (32*x, 32*y))
         if tile == 1:
             screen.blit(mine_tile, (32*x+4, 32*y+4))
-    print(column)
 
 running = True
 
