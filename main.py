@@ -51,12 +51,12 @@ pygame.init()
 
 screen = pygame.display.set_mode([512, 512])
 
-inners = [pygame.transform.scale(pygame.image.load("./"+str(i)+"_Inner.png").convert(), (24, 24)) for i in range(1,9)]
-mine_tile = pygame.transform.scale(pygame.image.load("Mine_Bomb.png").convert(), (24, 24))
-flag_tile = pygame.transform.scale(pygame.image.load("Flag.png").convert(), (24, 24))
-back_tile = pygame.transform.scale(pygame.image.load("Back_Tile.png").convert(), (32, 32))
-anger = pygame.transform.scale(pygame.image.load("Angry_Face.png").convert(), (48, 48))
-happy = pygame.transform.scale(pygame.image.load("Happy_Face.png").convert(), (48, 48))
+inners = [pygame.image.load("ressources/"+str(i)+"_tile.png").convert() for i in range(10)]
+mine_tile = pygame.transform.scale(pygame.image.load("ressources/Mine_Bomb.png").convert(), (24, 24))
+flag_tile = pygame.transform.scale(pygame.image.load("ressources/Flag.png").convert(), (24, 24))
+back_tile = pygame.transform.scale(pygame.image.load("ressources/Back_Tile.png").convert(), (32, 32))
+anger = pygame.transform.scale(pygame.image.load("ressources/Angry_Face.png").convert(), (48, 48))
+happy = pygame.transform.scale(pygame.image.load("ressources/Happy_Face.png").convert(), (48, 48))
 
 def on_click():
     if pygame.mouse.get_pressed()[0]:
