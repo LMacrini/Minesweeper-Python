@@ -58,7 +58,7 @@ for y, column in enumerate(field):
                 mines_around += field[y - 1][x + 1].mine
             if y < grid_y - 1:
                 mines_around += field[y + 1][x + 1].mine
-            mines_around += field[y][x - 1].mine
+            mines_around += field[y][x + 1].mine
         
         if y > 0:
             mines_around += field[y - 1][x].mine
@@ -120,7 +120,7 @@ while running:
 
         for y, column in enumerate(field):
             for x, tile in enumerate(column):
-                if tile.clicked == 0:
+                if tile.clicked == 1:
                     screen.blit(tile_image, (32*x, 32*y))
                 else:
                     screen.blit(tile.image, (32*x, 32*y))
