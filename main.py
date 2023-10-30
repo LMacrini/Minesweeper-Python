@@ -120,7 +120,7 @@ while running:
 
         for y, column in enumerate(field):
             for x, tile in enumerate(column):
-                if tile.clicked == 1:
+                if tile.clicked == 0:
                     screen.blit(tile_image, (32*x, 32*y))
                 else:
                     screen.blit(tile.image, (32*x, 32*y))
