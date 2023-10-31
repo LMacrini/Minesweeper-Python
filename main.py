@@ -71,7 +71,6 @@ for y, column in enumerate(field):
         
         if field[y][x].mine == 0:
             field[y][x].mines_around = mines_around
-            print(mines_around, field[y][x].mines_around)
         
         if field[y][x].mine:
             field[y][x].image = mine_tile
@@ -87,18 +86,6 @@ for y, column in enumerate(field):
     
 
 screen.fill((255, 255, 255))
-
-for y, column in enumerate(field):
-    for x, tile in enumerate(column):
-        if tile.clicked == 0:
-            screen.blit(tile_image, (32*x, 32*y))
-        else:
-            screen.blit(tile.texture (32*x, 32*y))
-            # print(tile.mines_around)
-        # if tile == 1:
-        #     screen.blit(mine_tile, (32*x, 32*y))
-        # else:
-        #     screen.blit(tile_image, (32*x, 32*y))
 
 running = True
 
