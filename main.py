@@ -12,6 +12,7 @@ grid_y = 20
 n_mines_ez = int(grid_x*grid_y / 10)
 n_mines = int(grid_x*grid_y / 6)
 n_mines_hard = int(grid_x*grid_y / 5)
+n_flags = 0
 
 pygame.init()
 screen = pygame.display.set_mode([grid_x*32, (grid_y+3)*32])
@@ -152,8 +153,10 @@ while running:
             if field[mouse_y][mouse_x].clicked != 1:
                 if field[mouse_y][mouse_x].clicked != 2:
                     field[mouse_y][mouse_x].clicked = 2
+                    n_flags += 1
                 else:
                     field[mouse_y][mouse_x].clicked = 0
+                    n_flags -= 1
             
         previous_mouse_state = [pygame.mouse.get_pressed()[0], pygame.mouse.get_pressed()[2]]
 
@@ -174,6 +177,16 @@ while running:
         screen.blit(happy, (grid_x*16 - 24, (grid_y+1)*32))
         if game_over:
             screen.blit(anger, (grid_x*16 - 24, (grid_y+1)*32))
+
+        if n_flags <= n_mines:
+            number_str = str(n_mines-n_flags).zfill(3)
+            x_mines = 96 - len(number_str) * numbers[0].get_width() // 2
+            for digit_char in number_str:
+                digit_index = int(digit_char)
+                screen.blit(numbers[digit_index], (x_mines, ((grid_y+1)*32) - numbers[digit_index].get_height() // 2))
+                x_mines += numbers[digit_index].get_width()
+        else:
+            print("You Went A Bit Overboard Bucko")
 
     pygame.display.flip()
 
