@@ -17,13 +17,13 @@ pygame.init()
 screen = pygame.display.set_mode([grid_x*32, (grid_y+3)*32])
 screen.fill((59, 76, 98))
 
-numbers = [pygame.image.load("ressources/"+str(i)+"_tile.png").convert() for i in range(10)]
-mine_tile = pygame.image.load("ressources/mine_tile.png").convert()
-mine_clicked = pygame.image.load("ressources/mine_clicked.png").convert()
-flag_tile = pygame.image.load("ressources/flag_tile.png").convert()
-tile_image = pygame.image.load("ressources/tile.png").convert()
-anger = pygame.transform.scale(pygame.image.load("ressources/Angry_Face.png").convert(), (48, 48))
-happy = pygame.transform.scale(pygame.image.load("ressources/Happy_Face.png").convert(), (48, 48))
+numbers = [pygame.image.load("resources/"+str(i)+"_tile.png").convert() for i in range(10)]
+mine_tile = pygame.image.load("resources/mine_tile.png").convert()
+mine_clicked = pygame.image.load("resources/mine_clicked.png").convert()
+flag_tile = pygame.image.load("resources/flag_tile.png").convert()
+tile_image = pygame.image.load("resources/tile.png").convert()
+anger = pygame.transform.scale(pygame.image.load("resources/Angry_Face.png").convert(), (48, 48))
+happy = pygame.transform.scale(pygame.image.load("resources/Happy_Face.png").convert(), (48, 48))
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self, mine):
