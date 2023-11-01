@@ -1,4 +1,4 @@
-name: Build SpaceWarp
+name: Build Minesweeper
 
 on:
   push:
