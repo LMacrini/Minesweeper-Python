@@ -128,8 +128,9 @@ while running:
         if pygame.mouse.get_pressed()[0] == 1 != previous_mouse_state[0]:
             mouse_x, mouse_y = pygame.mouse.get_pos()
             if mouse_x > grid_x * 32 or mouse_y > grid_y * 32:
-                field = generate_field()
-                game_over = False
+                if not (mouse_x < grid_x*16 - 24 or mouse_x > grid_x*16 + 24 or  mouse_y < (grid_y+1)*32 or mouse_y > grid_y*32 + 80):
+                    field = generate_field()
+                    game_over = False
                 break
             if game_over:
                 break
