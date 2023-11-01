@@ -1,0 +1,71 @@
+name: Build SpaceWarp
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions: write-all
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build-type:
+          - main
+        include:
+          - os: windows-latest
+            isWindows: true
+            arch: windows
+          - os: ubuntu-latest
+            isLinux: true
+            arch: linux
+          - os: macos-latest
+            isMac: true
+            arch: mac
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ matrix.build-type }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install Linux Packages
+        if: ${{ matrix.isLinux }}
+        run: sudo apt-get install libasound2-dev
+
+      - name: Install Python Packages
+        run: pip install pygame pyinstaller
+
+      - name: Build App
+        run: pyinstaller Minesweeper.spec
+
+      # - uses: nadeemjazmawe/inno-setup-action-cli@v6.0.5
+      #   if: ${{ matrix.isWindows }}
+      #   with: 
+      #     filepath: './ISS/script.iss'
+
+      - name: Move the resources folder
+        run: mv ./ressources ./dist/Minesweeper/ressources
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.arch }}-${{ matrix.build-type }}
+          path: ./dist/
+
+      # - name: Create Artifact (installer)
+      #   if: ${{ matrix.isWindows }}
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: ${{ matrix.arch }}-installer-${{ matrix.build-type }}
+      #     path: ./ISS/Output/
