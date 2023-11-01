@@ -48,7 +48,7 @@ def generate_field():
         field.append(shuffled_mines[i * grid_x : i * grid_x + grid_x])
 
     for y, column in enumerate(field):
-        for x, tile in enumerate(column):
+        for x, _ in enumerate(column):
             mines_around = 0
             
             if x > 0:
@@ -149,7 +149,7 @@ while running:
                 break
             mouse_x = int(mouse_x / 32)
             mouse_y = int(mouse_y / 32)
-            if field[mouse_y][mouse_x] != 1:
+            if field[mouse_y][mouse_x].clicked != 1:
                 if field[mouse_y][mouse_x].clicked != 2:
                     field[mouse_y][mouse_x].clicked = 2
                 else:
