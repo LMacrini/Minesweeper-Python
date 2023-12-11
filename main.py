@@ -9,9 +9,9 @@ from random import *
 
 grid_x = 40
 grid_y = 20
-n_mines_ez = int(grid_x * grid_y / 10)
+# n_mines_ez = int(grid_x * grid_y / 10)
 n_mines = int(grid_x * grid_y / 6)
-n_mines_hard = int(grid_x * grid_y / 5)
+# n_mines_hard = int(grid_x * grid_y / 5)
 n_flags = 0
 n_unclicked_tiles = grid_x * grid_y
 
